@@ -12,33 +12,32 @@
 			</div>
 		</header>
 
-<div ng-controller="myCtrl" >
-	<div id="mainPage" ng-show="!advstatus">
+	<div ng-controller="myCtrl" >
+		<div id="mainPage" ng-show="!advstatus">
 			<div class="main_page">
-<!-- 				<my-customer></my-customer> -->
+				<my-counter></my-counter>
 			</div>
 		</div>
 	</div>
 	<input type=button id="plus_button_bottom" ng-click="advstatus=true" value= '+'><br/>
 
 			<div id="formpage" ng-show="advstatus">
-	 			<form id="myForm"  name="myForm" method="post" onsubmit = "return(validate());">
+	 			<form name="myForm" ng-click="addCounter(label,color)">
 					<div class="header">
-						<input type="submit" class="saveForm" value= 'SAVE' ng-click="advstatus=false">
+						<input type="submit" class="saveForm" value= 'SAVE' ng-click="advstatus=false" ng-click="{{myForm.myInput.$valid}}">
 					</div>
-					<div class="container" ng-controller='MainCtrl'>
-					<label for="label">lable</label>
-					<input type="text" id="label" name="lable" ng-model='text'/>
-					<label for="color">color</label>
-					<select id="color" name="color">
-					<option value="grey" class="grey_color">grey</option>
-					<option value="pink" class="pink_color">pink</option>
-					<option value="yellow" class="yellow_color">yellow</option>
-					<option value="grey" class="green_color">green</option>
-					<option value="grey" class="red_color">red</option>
-					<option value="grey" class="white_color">white</option>
-					<option value="grey" class="black_color">black</option>
-					</select>
+					<div class="container">
+					label
+					<input type="text" id="label" name="label" ng-model="label" required="label" />
+					<p> label :{{label}} </p>
+					    <br />
+						<div ng-show="form.$submitted || form.lable.$touched">
+						<div ng-show="form.lable.$error.required">Tell us your name.</div>
+						</div>
+					color
+					<input type="color" name="color" ng-model="color"/>
+					<p> color : {{color}} </p>
+
 				</div>
 			</form>
 			</div>
