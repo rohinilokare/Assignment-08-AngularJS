@@ -7,39 +7,31 @@
   </head>
   <body class="body" ng-app="ThingCounterApp">
     <header class="header">
-      <div >
        <h3 class="top_content">Active Counters</h3>
-      </div>
     </header>
-    <div ng-controller="myCtrl" >
-      <div id="mainPage" ng-show="!showform">
-        <div class="main_page">
-          <h2>Active Counter List</h2>
-          <div ng-repeate="x in records">
+    <div ng-controller="counterController" >
+            <div class="main_page">
+            <h2>Active Counter List</h2>
             <my-counter></my-counter>
           </div>
-          <div class="space-for-buttons"></div>
-        </div>
-      </div>
-    </div>
-    <input type=button class="plus_button_bottom" ng-click="showform=true" value= '+'><br/>
+    <input type=button class="plus_button_bottom" ng-click="showForm()" value= '+'><br/>
 
-    <div id="formpage" ng-show="showform">
+    <div id="formpage" ng-show="hideform">
       <form name="myForm">
         <div class="header">
-          <input type="submit" class="save_form" value= 'SAVE' ng-click="SubmitForm" >
+          <input type="submit" class="save_form" value= 'SAVE' ng-click="SubmitForm()">
         </div>
         <div class="container">
           label
-          <input type="text" id="label" name="label" ng-model="label" required="label" />
+          <input type="text" id="label" name="label" ng-model="label"/>
           <p> label :{{label}} </p>
-          <h1>{{myForm.label.$valid}}</h1>
           color
           <input type="color" name="color" ng-model="color"/>
           <p> color : {{color}} </p>
-          </div>
+         </div>
       </form>
     </div>
+  </div>
   </body>
 </html>
 
