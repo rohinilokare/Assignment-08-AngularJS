@@ -1,6 +1,6 @@
 .body{
-	background-color : #555050 ;
-	margin: 0px;
+  background-color : #555050 ;
+  margin: 0px;
 }
 .header
 {
@@ -12,18 +12,19 @@
   display: block;
 }
 .top_content{
-	position: absolute;
-	height : 15% ;
-	color: white;
-	margin-left : 10%;
-	margin-top: 1%;
-	left :15px;
+  position: absolute;
+  height : 15% ;
+  color: white;
+  margin-left : 10%;
+  margin-top: 1%;
+  left :15px;
 }
 .main_page{
-	position: relative;
-	height:70%;
+  position: relative;
+  height:70%;
   text-align: center;
-}.button_group button {
+}
+.button_group button {
   text-align: center;
   background-color: #4CAF50;
   border: none;
@@ -61,7 +62,7 @@
 }
 .plus_button_bottom
 {
-	position: absolute;
+  position: absolute;
   height: 50px;
   width: 50px;
   background-color: #579AD5;
@@ -97,4 +98,6 @@ input[type=text], select {
   border-radius: 4px;
   box-sizing: border-box;
 }
-
+.space-for-buttons{
+  margin-bottom: 10px;
+}
