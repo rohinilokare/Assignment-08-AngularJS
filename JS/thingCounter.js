@@ -2,50 +2,36 @@
 var mainMod = angular.module('ThingCounterApp', []);
 
 mainMod.service("CounterService", function(){
-  var count = 0
-  this.increment = function(){
-    count =count + 1;
-    return count;
-  };
-
-  this.decrement = function(){
-    count = count -1;
-    return count;
-  };
-
   this.label = 'rohiniCounter';
   console.log('in label service');
   this.color = 'yellow';
 
 });
 
-mainMod.controller('myCtrl',function($scope,CounterService ) {
-  $scope.submitForm = function(){
-      if (myForm.label.$valid) {
-        alert('our form is amazing');
-      }
-      else{
-        alert('please provide your label');
-      }
-  }
+mainMod.controller('myCtrl',function($scope) {
 
-  $scope.increment = function(){
-    $scope.count = CounterService.increment();
-  }
+  $scope.label = 'label';
 
-  $scope.decrement = function(){
-    $scope.count = CounterService.decrement();
-  }
-
-  $scope.label = CounterService.label;
-
-  $scope.color = CounterService.color;
+  $scope.color = 'yellow';
 
 });
 
 mainMod.directive('myCounter', function() {
   return {
-    template : '<h1>ActiveCounterList</h1><div style="color:{{color}}"class="button_group"><button ng-click="decrement()"><span class = "minus"> - </span></button><button>{{label}}</button><button>count:{{count}}</button><button ng-click="increment()"><span class = "plus"> + </span></button></div>'
+    template : '<h1>ActiveCounterList</h1><div class="button_group"><button ng-click="decrement()"><span class = "minus"> - </span></button><button>{{label}}</button><button>count:{{count}}</button><button ng-click="increment()"><span class = "plus"> + </span></button></div>',
+    restrict: 'E',
+    link:function(scope,elm,attr) {
+    	scope.count = 0;
+       scope.increment = function(){
+       	scope.count = scope.count + 1
+       	return scope.count;
+       }
+
+      scope.decrement = function(){
+    		scope.count = scope.count - 1;
+    		return scope.count;
+  		}
+    }
   };
 });
 
@@ -55,3 +41,22 @@ mainMod.addCounter = function(label,color){
 console.log(this.label);
 console.log('in add counter function');
 }
+
+mainMod.controller('FormCtrl', function ($scope, $http) {
+
+     var formData = {
+        label: "default",
+        color: "default",
+    };
+
+    $scope.save = function() {
+        formData = $scope.form;
+    };
+
+    $scope.submitForm = function() {
+        console.log("posting data....");
+        formData = $scope.form;
+        console.log(formData);
+    };
+
+ });

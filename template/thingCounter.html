@@ -16,13 +16,14 @@
 			<div id="mainPage" ng-show="!showpage">
 				<div class="main_page">
 					<my-counter></my-counter>
+					<div id="space-for-buttons"></div>
 				</div>
 			</div>
 		</div>
 		<input type=button class="plus_button_bottom" ng-click="showpage=true" value= '+'><br/>
 
 		<div id="formpage" ng-show="showpage">
-			<form name="myForm" ng-click="submitForm()" novalidate>
+			<form name="myForm" ng-submit="submitForm()" ng-controller="FormCtrl" novalidate>
 				<div class="header">
 					<input type="submit" class="save_form" value= 'SAVE' ng-click="showpage=false">
 				</div>
