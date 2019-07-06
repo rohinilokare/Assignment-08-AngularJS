@@ -15,7 +15,9 @@
       <div id="mainPage" ng-show="!showform">
         <div class="main_page">
           <h2>Active Counter List</h2>
+          <div ng-repeate="x in records">
             <my-counter></my-counter>
+          </div>
           <div class="space-for-buttons"></div>
         </div>
       </div>
@@ -25,7 +27,7 @@
     <div id="formpage" ng-show="showform">
       <form name="myForm">
         <div class="header">
-          <input type="submit" class="save_form" value= 'SAVE' ng-click="showform=false">
+          <input type="submit" class="save_form" value= 'SAVE' ng-click="SubmitForm" >
         </div>
         <div class="container">
           label
