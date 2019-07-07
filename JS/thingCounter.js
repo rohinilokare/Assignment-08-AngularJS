@@ -13,11 +13,7 @@ mainMod.service('CounterService',function(){
 });
 
 mainMod.controller('counterController',function($scope,CounterService) {
-  $scope.showForm = function(){
-      $scope.hideform = true;
-  }
-
-  $scope.SubmitForm = function()
+  $scope.submitForm = function()
   {
     console.log('in submit form')
     CounterService.addCounter($scope)
@@ -28,7 +24,7 @@ mainMod.controller('counterController',function($scope,CounterService) {
     {
       $scope.color = '';
       $scope.label = '';
-      $scope.hideform = false;
+      $scope.showform = false;
     }
 
     $scope.counters = [];
