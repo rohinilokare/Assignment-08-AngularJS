@@ -13,8 +13,13 @@ mainMod.service('CounterService',function(){
 });
 
 mainMod.controller('counterController',function($scope,CounterService) {
+$scope.color = '';
+$scope.label = 'default';
+
   $scope.submitForm = function()
   {
+    var form = myForm.label.$valid
+    console.log(form)
     console.log('in submit form')
     CounterService.addCounter($scope)
     refreshForm();
@@ -23,7 +28,7 @@ mainMod.controller('counterController',function($scope,CounterService) {
   function refreshForm()
     {
       $scope.color = '';
-      $scope.label = '';
+      $scope.label = 'default';
       $scope.showform = false;
     }
 

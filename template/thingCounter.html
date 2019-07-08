@@ -16,14 +16,18 @@
     <input type=button class="plus_button_bottom" ng-click="showform=true" value= '+'><br/>
 
     <div id="formpage" ng-show="showform">
-      <form name="myForm" >
+      <form name="myForm" novalidate>
         <div class="header">
-          <input type="submit" class="save_form" value= 'SAVE' ng-click="submitForm()">
+          <input type="submit" class="save_form" value= 'SAVE' ng-click="submitForm()" ng-disabled="myForm.label.$dirty && myForm.label.$invalid">
         </div>
         <div class="container">
           label
-          <input type="text" id="label" name="label" ng-model="label"/>
+          <p><input type="text" id="label" name="label" ng-model="label" required />
           <p>Your label  :{{label}} </p>
+          <span style="color:red" ng-show="myForm.label.$dirty && myForm.label.$invalid">
+          <span ng-show="myForm.label.$error.required">label is required.</span>
+          </span></p>
+           <!-- <h1>{{myForm.label.$valid}}</h1> -->
           color
           <input type="color" name="color" ng-model="color"/>
           <p> Your selected color : {{color}} </p>
